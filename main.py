@@ -12,7 +12,8 @@ from nextcord.ext.commands import DefaultHelpCommand
 intent = nextcord.Intents.all()
 
 bot = commands.Bot(command_prefix="-", intents=intent)
-whitelist = [815313527836377148, 748224604341927936, 1030813206010134578]
+apikey = "E99l9NOctud3vmu6bPne"
+madeby = "YourName"
 
 presences = [
     nextcord.Activity(name="Feliciaa", type=nextcord.ActivityType.watching),
@@ -37,7 +38,7 @@ async def on_ready():
 async def hydrogen(ctx, link: str):
         hwid = link.replace("https://gateway.platoboost.com/a/2569?id=", "")
         await ctx.send("getting your key..")
-        response = requests.get(f"https://stickx.top/api-hydrogen/?hwid={hwid}&api_key=api key")
+        response = requests.get(f"https://stickx.top/api-hydrogen/?hwid={hwid}&api_key={apikey}")
         newresponse = response.text.replace("key", "")
         n = newresponse.replace('{"":"', "")
         nn = n.replace('"}', "")
@@ -45,7 +46,7 @@ async def hydrogen(ctx, link: str):
         embed.set_author(name="Key Bypassed!")
         embed.add_field(name="Hold to copy", value=nn, inline=False)
         embed.set_thumbnail(url="https://cdn.discordapp.com/icons/924722337981530132/73e6c24fec92005c5521b58bcd8c9e5d.webp?size=128")
-        embed.set_footer(text="Made By FellAlexandra")
+        embed.set_footer(text="Made By {madeby}")
         await ctx.send(embed=embed)
 
 @bot.slash_command(name="codex", description="gets your codex key")
